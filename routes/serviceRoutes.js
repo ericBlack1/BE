@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const serviceController = require("../controllers/serviceController");
-const upload = require('../config/uploadConfig');
+const upload = require('../config/cloudinaryConfig');
 
 /**
  * @swagger
