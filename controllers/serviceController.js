@@ -26,7 +26,15 @@ exports.getServiceById = async (req, res) => {
 
 exports.createService = async (req, res) => {
   try {
-    const newService = new Service(req.body);
+    const { title, status } = req.body;
+    const image = req.file ? req.file.path : null; // Get image path from uploaded file
+
+    const newService = new Service({
+      title,
+      image,
+      status
+    });
+
     await newService.save();
     res.status(201).json({
       status_code: 201,
@@ -35,6 +43,7 @@ exports.createService = async (req, res) => {
       data: newService,
     });
   } catch (error) {
+    console.error("Error creating service:", error); // Log error to console
     res.status(500).json({ status_code: 500, success: false, message: "Failed to create service" });
   }
 };

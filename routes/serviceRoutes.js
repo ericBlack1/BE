@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const serviceController = require("../controllers/serviceController");
+const upload = require('../config/uploadConfig');
 
 /**
  * @swagger
@@ -128,7 +129,7 @@ router.get("/:id", serviceController.getServiceById);
  *                 data:
  *                   $ref: '#/components/schemas/Service'
  */
-router.post("/", serviceController.createService);
+router.post("/", upload.single('image'), serviceController.createService);
 
 /**
  * @swagger

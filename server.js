@@ -24,6 +24,7 @@ app.use('/api/sme', smeRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/smes", productRoutes);
+app.use('/uploads', express.static('uploads'));
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 const PORT = process.env.PORT || 5000;
